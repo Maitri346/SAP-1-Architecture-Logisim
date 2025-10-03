@@ -269,12 +269,12 @@ The instruction encoding system utilizes **upper nibble = IR[7:4]** for opcode s
 
 | Address   | Instruction | Hex | Mnemonic & Explanation        |
 |-----------|-------------|-----|--------------------------------|
-| 00001101  | 00011101    | 1D  | LDA 13 (Load A from M[13])     |
-| 00001110  | 00101110    | 2E  | LDB 14 (Load B from M[14])     |
-| 00010001  | 01100101    | 65  | JMP 5 (PC ← 5)                 |
-| 00001001  | 00110000    | 30  | ADD (A ← A + B)                |
-| 00001110  | 01011111    | 5F  | STA 15 (M[15] ← A)             |
-| 00001001  | 11110000    | F0  | HLT (Stop execution)           |
+| 00000000  | 00011101    | 1D  | LDA 13 (Load A from M[13])     |
+| 00000001   | 00101110    | 2E  | LDB 14 (Load B from M[14])     |
+| 00000010 | 01100101    | 65  | JMP 5 (PC ← 5)                 |
+| 00000011   | 00110000    | 30  | ADD (A ← A + B)                |
+| 00000100  | 01011111    | 5F  | STA 15 (M[15] ← A)             |
+| 00000101   | 11110000    | F0  | HLT (Stop execution)           |
 
 ---
 
@@ -282,8 +282,8 @@ The instruction encoding system utilizes **upper nibble = IR[7:4]** for opcode s
 
 | Address (Binary) | Data (Binary) | Decimal | Hex |
 |------------------|---------------|---------|-----|
-| 0000101          | 00100011      | 35      | 23  |
-| 0000110          | 00011001      | 25      | 19  |
+| 00001101          | 00100011      | 35      | 23  |
+| 00001110          | 00011001      | 25      | 19  |
 ### Assembler
 
 The assembler translates **SAP-1 assembly language programs** into **machine code (hexadecimal)** suitable for execution in Logisim.  
