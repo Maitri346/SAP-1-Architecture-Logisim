@@ -315,3 +315,70 @@ This enables efficient program development, testing, and debugging of the SAP-1 
 | **JMP + ADD Program** | LDA 13, LDB 14, JMP 5, ADD, STA 15, HLT <br> (ORG 13, DEC 35, ORG 14, DEC 25)                 | 1D 2E 65 30 5F F0 00 00 00 00 00 00 23 19 00  |
 
 ---
+## Operation
+
+The CPU functions through a repetitive sequence of operations controlled by the system clock, commonly known as the **fetch–decode–execute** cycle.  
+This process can be divided into three main stages:
+
+---
+
+### Fetch–Decode–Execute Cycle
+
+**Fetch**
+- **T1**: The Program Counter (PC) outputs the current instruction address onto the bus, which is then stored in the Memory Address Register (MAR).  
+- **T2**: The memory unit provides the instruction stored at the MAR address onto the data bus, and the Instruction Register (IR) captures this instruction.  
+- **T3**: The PC is incremented so it is ready to point to the next instruction in sequence.  
+
+**Decode**  
+- The opcode portion of the IR is forwarded to the instruction decoder, which activates the appropriate control line (e.g., LDA, ADD).  
+- This decoded output, combined with the active timing state (T-state), defines the exact set of control signals required for execution.  
+
+**Execute**  
+- The control unit asserts the relevant signals to carry out the micro-operations of the decoded instruction.  
+- The number of clock states required depends on the instruction type.  
+  - Example: LDA typically requires two states, ADD takes two, while HLT completes in a single state.  
+- This cycle continues automatically, instruction by instruction, until a HLT command is reached, at which point the CPU halts and the state counter is stopped.  
+
+---
+
+### Running the CPU in Manual Mode
+
+To run the SAP-1 CPU in **Manual/Loader mode**, the following steps are followed:
+
+**Initial Setup**
+- Turn the debug pin OFF (LOW) to enable automated control.  
+- Pulse the pc_reset pin once to reset the Program Counter (PC) to 0000.  
+- Ensure the main clock (clk1) is OFF.  
+- Set the en_run pin to HIGH to enable execution.  
+- Configure the RAM (Debug Mode):  
+  - Turn ON the debug pin (HIGH). This enables manual RAM programming.  
+
+**For each instruction/data**
+- Set address: Use debug_data to define the 8-bit memory address.  
+- Load address into MAR: Pulse `mar_in_en_manual`.  
+- Set instruction/data: Use debug_data to provide the 8-bit value.  
+- Write to RAM: Pulse `ram_wr_manual`.  
+
+**After loading instructions/data**
+- Turn OFF the debug pin (LOW).  
+- Pulse pc_reset to reset PC to 0000 for program execution.  
+
+**Run the Program**
+- **Manual stepping**: Press the clk button repeatedly to step through the Fetch–Decode–Execute cycle, observing PC, MAR, IR, A/B registers, and RAM.  
+- **Continuous run**: Enable the continuous clock source for automated execution.  
+
+**Observe HLT**
+- When the HLT instruction is reached, the CPU halts, stopping the clock or state counter.  
+
+**Verify Results**
+- Check RAM address 00001111 (decimal 15).  
+- The expected content is `00111100 (decimal 60)`, obtained from adding decimal 35 and decimal 25.  
+
+---
+
+### SAP-1 CPU Circuit Implementation
+
+![SAP-1 CPU Circuit](images/fig17.png)
+
+*Figure 17: SAP-1 CPU circuit implementation in Logisim Evolution, highlighting debug signals, control pins, and RAM verification for program execution.*
+
