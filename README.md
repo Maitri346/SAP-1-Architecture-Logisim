@@ -77,7 +77,7 @@ The *A and B registers* use reg_gp modules to store *8-bit data*. They have thre
 2. *Output:* Drives the bus via tri-state logic using a_out and b_out.  
 3. *Internal:* Provides direct access to the *ALU* through reg_int_out without using the bus.
 
-![A/B Register Subsystem](images/fig3_.png)
+![A/B Register Subsystem](images/fig3.png)
 *Figure 3:* A/B register subsystem with input, output, and internal interfaces.  
 
 ### Program Counter (PC) Implementation
@@ -107,11 +107,11 @@ The *SRAM* operates in two modes:
 - *Read Mode:* When sram_rd = 1, the value at RAM[MAR] is placed on the bus during T2 (instruction fetch) and T5 (LDA/LDB).  
 - *Write Mode:* When sram_wr = 1, the data on the bus is written into RAM[MAR] during T5 of the STA instruction.
 
-![Memory Element](images/fig_6.png)
+![Memory Element](images/fig6.png)
 
 *Figure 6:* Register-based memory element showing data_in, wr_en, rd_en, clock, and chip select (cs) signals. Output to the bus is via data_out.  
 
-![Memory Subsystem](images/fig_7.png)
+![Memory Subsystem](images/fig7.png)
 
 *Figure 7:* Memory subsystem showing MAR operation and SRAM read/write timing.  
 
@@ -126,7 +126,7 @@ The *Instruction Register (IR)* has a dual role for *instruction storage* and *o
 
 The **opcode decoder (ins_tab)** implements a *4-to-16 decoding scheme*, producing one-hot signals such as insLDA, insLDB, insADD, insSUB, insSTA, insJMP, insHLT, with unused outputs reserved for future instructions.
 
-![Instruction Register and Opcode Decoder](images/fig_8.png)
+![Instruction Register and Opcode Decoder](images/fig8.png)
 *Figure 8:* Architecture of the Instruction Register and opcode decoder, showing instruction loading, opcode routing, and operand forwarding.
 
 ### Arithmetic Logic Unit (ALU) Implementation
@@ -139,7 +139,7 @@ The *ALU subsystem* performs *8-bit arithmetic* with the following features:
 - *Architectural Design:* Ripple-carry adder with mode control; simple hardware with linear carry propagation delay.  
 - *Bus Interface:* ALU output drives the system bus only when alu_out = 1 via tri-state logic.
 
-![ALU Implementation](images/fig_9.png)
+![ALU Implementation](images/fig9.png)
 *Figure 9:* ALU implementation with ripple-carry architecture and tri-state bus interface. 
 
 
@@ -152,7 +152,7 @@ The **boot/loader subsystem (ins_loader)** securely transfers program data from 
 3. *Address Sequencing:* Uses a 4-bit CTR4 counter for upward counting, producing addresses bc_address[3:0] for systematic RAM writes.  
 4. *Phase Control:* Generates two non-overlapping clock phases (Φ and ¬Φ) via a D flip-flop with feedback inversion to synchronize data transfer and prevent contention.
 
-![Boot/Loader Subsystem](images/fig_10.png)
+![Boot/Loader Subsystem](images/fig10.png)
 *Figure 10:* Boot/loader subsystem with sequential address generation and dual-phase clocking.  
 
 
@@ -173,12 +173,12 @@ The control sequencer operates in two paradigms:
 
 Both modes maintain *strict signal integrity* and *timing synchronization*.
 
-![Manual Mode Control Sequencer](images/fig_11.png)
+![Manual Mode Control Sequencer](images/fig11.png)
 *Figure 11:* SAP-1 Manual Mode control sequencer  
 
 The *Manual Mode* sequencer provides a simplified execution pathway, supporting only the ADD instruction for step-wise verification and manual debugging.  
  
-![Automatic Mode Control Sequencer](images/fig_12.png)
+![Automatic Mode Control Sequencer](images/fig12.png)
 *Figure 12:* SAP-1 Automatic Mode control sequencer 
 
 The *Automatic Mode* sequencer manages the full fetch–decode–execute cycle for ADD, SUB, and JMP instructions using *ring counter timing* combined with *opcode decoding, ensuring **efficient bus utilization* and *precise timing*.
@@ -194,7 +194,7 @@ For every instruction:
 - *T2:* Memory read initiated (sram_rd) and IR loaded (IR ← M[MAR]).  
 - *T3:* PC incremented (PC ← PC + 1).
 
-![Timing Control Generator](images/fig_13.png)
+![Timing Control Generator](images/fig13.png)
 *Figure 13:* Six-phase ring counter  
 
 ### Representative Execute Sequences
@@ -217,7 +217,7 @@ Automatic operation uses:
 
 These signals coordinate the fetch–decode–execute cycle for deterministic micro-operation execution.
 
-![Automatic Mode Control](images/fig_14.png)
+![Automatic Mode Control](images/fig14.png)
 *Figure 14:* Automatic Mode control sequencer  
 
 *Fetch Control Equations*
@@ -251,7 +251,7 @@ Program transfer follows a *handshake protocol*:
 
 This ensures *safe memory loading* without bus contention.
 
-![Manual/Loader Control System](images/fig_15.png)
+![Manual/Loader Control System](images/fig15.png)
 *Figure 15:* Manual/Loader control system architecture  
 
 
