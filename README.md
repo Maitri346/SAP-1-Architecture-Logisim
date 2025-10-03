@@ -94,6 +94,7 @@ The *Program Counter (PC)* supports *dual modes* for sequential execution and pr
 *Figure 4:* Program Counter showing *increment and jump modes*. 
 
 ![Program Counter Direct Load](images/fig5.png)
+
 *Figure 5:* Program Counter direct load and sequential functionality. 
 
 ### Memory System and Address Register
