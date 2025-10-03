@@ -67,7 +67,8 @@ This enables efficient program development, testing, and debugging of the SAP-1 
 
 ---
 
-#### 🔗 [Open the SAP-1 Assembler Tool](SAP_1_Assembler_35.html)
+#### 🔗 [Open the SAP-1 Assembler Tool](https://htmlpreview.github.io/?https://github.com/Maitri346/SAP-1-Architecture-Logisim/blob/main/SAP_1_Assembler_35.html)
+
 
 ---
 
