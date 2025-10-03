@@ -303,7 +303,7 @@ This enables efficient program development, testing, and debugging of the SAP-1 
 ![SAP-1 Assembler](images/fig16.png)
 
 
-*Figure: Web-based SAP-1 assembler interface converting assembly instructions into Logisim-compatible hexadecimal code.*
+*Figure 16: Web-based SAP-1 assembler interface converting assembly instructions into Logisim-compatible hexadecimal code.*
 
 ---
 
@@ -381,4 +381,19 @@ To run the SAP-1 CPU in **Manual/Loader mode**, the following steps are followed
 ![SAP-1 CPU Circuit](images/fig17.png)
 
 *Figure 17: SAP-1 CPU circuit implementation in Logisim Evolution, highlighting debug signals, control pins, and RAM verification for program execution.*
+### Running the CPU in Automatic Mode (JMP + ADD Program)
 
+To execute the CPU in automatic mode using the program with JMP and ADD instructions, follow the procedure below:
+
+---
+
+#### 1. Initial Setup
+- Ensure the debug pin is set to LOW.  
+- Ensure the main clock (clk1) is OFF.  
+- Pulse the pc_reset pin once to reset the Program Counter to 0000.  
+#### 2. Program the ROM
+- Open the ROM component in Logisim Evolution.  
+- Right-click on it and select **Edit Contents...**  
+- A memory editor window will appear.  
+- Enter the following hex code sequence into the ROM memory cells starting from address 0000:
+- 1D 2E 65 00 30 5F F0 00 00 00 00 00 23 19 00 00
