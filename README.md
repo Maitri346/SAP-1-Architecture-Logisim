@@ -74,7 +74,7 @@ This enables efficient program development, testing, and debugging of the SAP-1 
 
 #### SAP-1 Assembler Interface
 
-![SAP-1 Assembler](assembler_screenshot.png)
+![SAP-1 Assembler](fig16.png)
 
 *Figure: Web-based SAP-1 assembler interface converting assembly instructions into Logisim-compatible hexadecimal code.*
 
