@@ -57,3 +57,33 @@ The instruction encoding system utilizes **upper nibble = IR[7:4]** for opcode s
 |------------------|---------------|---------|-----|
 | 0000101          | 00100011      | 35      | 23  |
 | 0000110          | 00011001      | 25      | 19  |
+### Assembler
+
+The assembler translates **SAP-1 assembly language programs** into **machine code (hexadecimal)** suitable for execution in Logisim.  
+It supports instructions such as **LDA, LDB, ADD, SUB, STA, JMP, and HLT**, along with directives like **ORG** and **DEC**.  
+The tool automatically generates **Logisim-compatible v2.0 raw hex output**, avoiding manual conversion errors.  
+
+This enables efficient program development, testing, and debugging of the SAP-1 system.
+
+---
+
+#### 🔗 [Open the SAP-1 Assembler Tool](PUT-YOUR-ASSEMBLER-LINK-HERE)
+
+---
+
+#### SAP-1 Assembler Interface
+
+![SAP-1 Assembler](assembler_screenshot.png)
+
+*Figure: Web-based SAP-1 assembler interface converting assembly instructions into Logisim-compatible hexadecimal code.*
+
+---
+
+#### Table 3: Examples of Assembly Programs and Corresponding Hex Codes
+
+| Example         | Assembly Code                                                                                       | Hex Code                                      |
+|-----------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| **ADD Program** | LDA 13, LDB 14, ADD, STA 15, HLT <br> (ORG 13, DEC 35, ORG 14, DEC 25)                              | 1D 2E 30 5F F0 00 00 00 00 00 00 23 19 00 00  |
+| **JMP + ADD Program** | LDA 13, LDB 14, JMP 5, ADD, STA 15, HLT <br> (ORG 13, DEC 35, ORG 14, DEC 25)                 | 1D 2E 65 30 5F F0 00 00 00 00 00 00 23 19 00  |
+
+---
