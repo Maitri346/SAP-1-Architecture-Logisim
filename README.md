@@ -67,7 +67,7 @@ This enables efficient program development, testing, and debugging of the SAP-1 
 
 ---
 
-#### 🔗 [Open the SAP-1 Assembler Tool](PUT-YOUR-ASSEMBLER-LINK-HERE)
+#### 🔗 [Open the SAP-1 Assembler Tool](SAP_1_Assembler_35.html)
 
 ---
 
