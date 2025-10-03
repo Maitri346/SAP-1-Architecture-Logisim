@@ -31,10 +31,17 @@ Click on the Table of Contents below to directly go to the sections:
 
 - [Future Improvement](#future-improvement)
 - [Conclusion](#conclusion)
+## Video Tutorials
+
+You can watch the complete walkthrough and demonstration of the SAP-1 computer design in the following video:
+
+▶️ [Watch the SAP-1 Video Tutorial](https://youtu.be/hzrf5gsNffk)
+
+---
 ## Project Overview
 
 This project implements an enhanced 8-bit SAP-1 computer in Logisim Evolution with hardwired control and an extended instruction set (LDA, LDB, ADD, SUB, STA, JMP, HLT).It supports Automatic Mode (fetch–decode–execute cycle) and Manual/Loader Mode for program transfer.A control sequencer manages the bus and timing, while a web-based assembler converts assembly code into Logisim-compatible images.Test programs verified correct instruction execution and memory operations, making it a reliable educational framework for learning processor architecture.
-
+---
 ## Objectives
 
 - Develop an improved SAP-1 (8-bit) computer in Logisim Evolution for teaching and system-level analysis.  
@@ -42,7 +49,7 @@ This project implements an enhanced 8-bit SAP-1 computer in Logisim Evolution wi
 - Support Automatic Mode (six-stage ring counter T1–T6 with opcode decoder) and Manual/Loader Mode for safe program loading into RAM.  
 - Design a datapath with dual 8-bit registers (A and B), ripple-carry ALU (ADD/SUB), 4-bit program counter (increment/load), Memory Address Register (MAR), 16×8 SRAM, and Instruction Register (opcode + operand) while enforcing strict single-driver bus operation.
 
-
+---
 ## Key Features
 
 - *8-bit CPU Architecture:* Implements the classic SAP-1 design with 8-bit data and address buses.  
@@ -56,7 +63,7 @@ This project implements an enhanced 8-bit SAP-1 computer in Logisim Evolution wi
 - *Expandable Instruction Set:* Supports basic instructions like *LDA, ADD, SUB, STA, OUT, HLT*.  
 - *Educational Tool:* Perfect for learning CPU architecture, instruction cycles, and control logic using *Logisim visualization*.
 
-
+---
 
 ## Architecture and Functional Block Analysis
 
