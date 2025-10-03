@@ -34,7 +34,7 @@ Click on the Table of Contents below to directly go to the sections:
 
 ## Project Overview
 
-This project implements an *enhanced 8-bit SAP-1 computer* in *Logisim Evolution* with *hardwired control* and an extended instruction set (LDA, LDB, ADD, SUB, STA, JMP, HLT).  
+This project implements an enhanced 8-bit SAP-1 computer in Logisim Evolution with hardwired control and an extended instruction set (LDA, LDB, ADD, SUB, STA, JMP, HLT).  
 It supports *Automatic Mode* (fetch–decode–execute cycle) and *Manual/Loader Mode* for program transfer.  
 A *control sequencer* manages the bus and timing, while a *web-based assembler* converts assembly code into Logisim-compatible images.  
 Test programs verified correct instruction execution and memory operations, making it a *reliable educational framework* for learning processor architecture.
