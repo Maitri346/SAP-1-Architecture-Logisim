@@ -404,20 +404,15 @@ To execute the CPU in automatic mode using the program with JMP and ADD instruct
 - Allow the CPU to complete writing all instructions and data into RAM.  
 - Observe MAR and Data Bus activity on the 7-segment displays during this phase.  
 
----
-
 #### 4. Stop the Bootloader
 - Set the debug pin back to LOW.  
 - Pulse the main clk once to ensure the bootloader process safely stops.  
 
----
 
 #### 5. Run the Program
 - Pulse **pc_reset** again to reset the Program Counter to 0000.  
 - Provide clock pulses (manual clicking or continuous clock) to let the CPU execute.  
 - Observe PC, MAR, IR, Register A, and Register B values in the 7-segment displays through the Fetch–Decode–Execute cycle.  
-
----
 
 #### 6. Execution Sequence
 - Fetch LDA(13): load value at address 13 into Register A.  
@@ -427,13 +422,9 @@ To execute the CPU in automatic mode using the program with JMP and ADD instruct
 - Execute STA(15): store the result into address 15.  
 - Execute HLT, stopping the CPU.  
 
----
-
 #### 7. Verify Result
 - After execution, check RAM address **1111 (decimal 15)**.  
 - Expected result: Register A and RAM[15] contain the sum of DEC 35 (0x23) and DEC 25 (0x19), i.e., **0x3C (60 decimal)**.  
-
----
 
 ### SAP-1 CPU Execution (Automatic Mode)
 
