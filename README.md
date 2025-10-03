@@ -397,3 +397,87 @@ To execute the CPU in automatic mode using the program with JMP and ADD instruct
 - A memory editor window will appear.  
 - Enter the following hex code sequence into the ROM memory cells starting from address 0000:
 - 1D 2E 65 00 30 5F F0 00 00 00 00 00 23 19 00 00
+#### 3. Load Program to RAM (Bootloader Mode)
+- Set the debug pin to HIGH. The **Code Loading Mode LED** will turn ON.  
+- With each clk pulse, the CPU will copy the program from ROM into RAM.  
+  (Two clock pulses are required per instruction/data value.)  
+- Allow the CPU to complete writing all instructions and data into RAM.  
+- Observe MAR and Data Bus activity on the 7-segment displays during this phase.  
+
+---
+
+#### 4. Stop the Bootloader
+- Set the debug pin back to LOW.  
+- Pulse the main clk once to ensure the bootloader process safely stops.  
+
+---
+
+#### 5. Run the Program
+- Pulse **pc_reset** again to reset the Program Counter to 0000.  
+- Provide clock pulses (manual clicking or continuous clock) to let the CPU execute.  
+- Observe PC, MAR, IR, Register A, and Register B values in the 7-segment displays through the Fetch–Decode–Execute cycle.  
+
+---
+
+#### 6. Execution Sequence
+- Fetch LDA(13): load value at address 13 into Register A.  
+- Fetch LDB(14): load value at address 14 into Register B.  
+- Execute JMP 5: program counter jumps to address 5.  
+- At address 5, execute ADD (Register A + Register B).  
+- Execute STA(15): store the result into address 15.  
+- Execute HLT, stopping the CPU.  
+
+---
+
+#### 7. Verify Result
+- After execution, check RAM address **1111 (decimal 15)**.  
+- Expected result: Register A and RAM[15] contain the sum of DEC 35 (0x23) and DEC 25 (0x19), i.e., **0x3C (60 decimal)**.  
+
+---
+
+### SAP-1 CPU Execution (Automatic Mode)
+
+#### After loading all instructions and data values into RAM
+![After loading RAM](images/fig18.png)
+
+*Figure 18: After loading all instruction and data values into RAM memory.*
+
+#### After executing LDA 13
+![After LDA 13](images/fig19.png)
+
+*Figure 19: Value 35 is loaded from memory address 13 into Register A.*
+
+#### After executing LDB 14
+![After LDB 14](images/fig20.png)
+
+*Figure 20: Value 25 is loaded from memory address 14 into Register B.*
+
+#### After executing JMP 5
+![After JMP 5](images/fig21.png)
+
+*Figure 21: Program Counter updated to address 5, redirecting execution flow.*
+
+#### After executing ADD
+![After ADD](images/fig22.png)
+
+*Figure 22: Contents of Register A and Register B are added, and the result (60) is stored back into Register A.*
+
+#### After executing STA 15
+![After STA 15](images/fig23.png)
+
+*Figure 23: The result from Register A (60) is written into memory address 15.*
+## Future Improvement
+
+Potential directions for extending the current SAP-1 implementation include:  
+
+- *Status Flags*: Introduce Zero (Z) and Carry (C) flags to support conditional branch instructions (e.g., JZ, JC) for advanced control flow.  
+- *Enhanced Memory & Instructions*: Support multi-byte memory addressing, immediate data loading, and richer instruction formats.  
+- *Microcoded Control Unit*: Enable systematic ISA expansion for new operations like shift and rotate instructions.  
+- *Expanded Assembler*: Develop an assembler with symbolic labels, expressions, and enhanced directive support to improve programmability, usability, and instructional validation.
+
+## Conclusion
+
+The enhanced SAP-1 successfully bridges classical processor design with modern simulation-based education.  
+With dual operational modes, expanded instruction support, and a structured control sequencer, the system demonstrates technical correctness and pedagogical clarity.  
+Validation through test programs confirmed proper execution, control logic, and timing coordination.  
+This project provides a practical, extensible platform for undergraduate learning in computer architecture and lays the foundation for future enhancements in processor design and research.
